@@ -1,12 +1,16 @@
-import React, { PropsWithChildren, createContext } from 'react'
+import React, { PropsWithChildren, createContext, useContext } from 'react'
 import { Optional } from '../../utils/Optional';
-import { MatchStore } from './MatchStore';
+import { MatchesStore } from './MatchesStore';
 
-export const MatchesContext = createContext<Optional<MatchStore>>(undefined);
+const MatchesContext = createContext<Optional<MatchesStore>>(undefined);
+
+export const useMatchesContext = () => useContext(MatchesContext)
 
 export const MatchesProvider = (props: PropsWithChildren<unknown>) => {
+  const store = new MatchesStore();
+
   return (
-    <MatchesContext.Provider value={new MatchStore()} >
+    <MatchesContext.Provider value={store} >
       {props.children}
     </MatchesContext.Provider>
   )

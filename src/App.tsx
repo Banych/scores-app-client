@@ -1,26 +1,30 @@
-import React, { useContext, useEffect } from 'react';
+import { observer } from 'mobx-react-lite';
+import React, { useEffect } from 'react';
 import './App.css';
-import { MatchesContext } from './stores/Matches/Matches.context';
+import MatchItem from './components/matches/MatchItem/MatchItem';
+import { useMatchesContext } from './stores/Matches/Matches.context';
 
-const App = () => {
-  const context = useContext(MatchesContext)
+const App = observer(() => {
+  const context = useMatchesContext();
+
   useEffect(() => {
     context?.loadMatches();
   }, [ context ])
+
   return (
-    <div className="App">
+    <div className="container">
       <header className="App-header">
         Home page
       </header>
       <main>
         <ul>
-          {[ ...context?.matches?.values() || [] ].map(match => (
-            <li key={match.id} value={match.id}>{match.homeTeam.name} - {match.awayTeam.name}</li>
+          {context?.matchesArray.map(match => (
+            <MatchItem key={match.id} item={match} />
           ))}
         </ul>
       </main>
     </div>
   );
-}
+})
 
 export default App;
