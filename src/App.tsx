@@ -1,16 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import api from './api';
+import React, { useContext, useEffect } from 'react';
 import './App.css';
-import { Match } from './models/classes/Match';
+import { MatchesContext } from './stores/Matches/Matches.context';
 
 const App = () => {
-  const [ matches, setMatches ] = useState<Match[]>([])
+  const context = useContext(MatchesContext)
   useEffect(() => {
-    api.Matches.list().then(result => {
-      const matches = result.map(match => new Match(match))
-      setMatches(matches)
-    })
-  }, [])
+    context?.loadMatches();
+  }, [ context ])
   return (
     <div className="App">
       <header className="App-header">
@@ -18,7 +14,7 @@ const App = () => {
       </header>
       <main>
         <ul>
-          {matches.map(match => (
+          {[ ...context?.matches?.values() || [] ].map(match => (
             <li key={match.id} value={match.id}>{match.homeTeam.name} - {match.awayTeam.name}</li>
           ))}
         </ul>
