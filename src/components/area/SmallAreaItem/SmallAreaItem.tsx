@@ -33,7 +33,7 @@ const SmallAreaItem = (props: AreaItemProps) => {
     <img
       src={ensignUrl}
       alt={code}
-      style={{ maxWidth: imgSize, maxHeight: imgSize }}
+      style={{ width: imgSize, maxHeight: imgSize }}
     />
   );
 };

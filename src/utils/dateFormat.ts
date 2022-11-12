@@ -6,7 +6,7 @@ export const dateFormat = (
 ): string => {
   switch (length) {
     case 'LONG':
-      return format(date, 'll MMMM yyyy hh:mm');
+      return format(date, 'dd MMMM yyyy hh:mm');
     case 'SHORT':
       return format(date, 'd MMM yyyy');
   }
