@@ -1,5 +1,5 @@
 import { makeAutoObservable } from 'mobx';
-import api from '../../api';
+import { Matches } from '../../api';
 import { Match } from '../../models/classes/Match';
 
 export class MatchesStore {
@@ -14,7 +14,7 @@ export class MatchesStore {
   }
 
   loadMatches = () => {
-    api.Matches.list().then(result => {
+    Matches.list().then(result => {
       this.setElementsMap(new Map<number, Match>(result.map(
         match => ([ match.id, new Match(match) ])
       )))

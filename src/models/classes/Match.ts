@@ -1,9 +1,7 @@
-import { dateFormat } from '../../utils/dateFormat';
 import type { DTOable } from '../interfaces/DTOable';
 import type { IArea } from '../interfaces/IArea';
 import type { ICompetition } from '../interfaces/ICompetition';
 import type { IMatch } from '../interfaces/IMatch';
-import type { IScore } from '../interfaces/IScore';
 import type { ISeason } from '../interfaces/ISeason';
 import type { ITeam } from '../interfaces/ITeam';
 import type { MatchGroup } from '../MatchGroup';

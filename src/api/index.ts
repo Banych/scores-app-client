@@ -17,12 +17,8 @@ const requests = {
   del: <T>(url: string) => axios.delete<T>(url).then(responseBody),
 };
 
-const Matches = {
+export const Matches = {
   list: () =>
     requests.get<IMatchResult>('/matches').then((result) => result.matches),
   details: (id: string) => requests.get<IMatch>(`/matches/${id}`),
-};
-
-export default {
-  Matches,
 };
