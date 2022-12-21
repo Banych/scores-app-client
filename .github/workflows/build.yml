@@ -6,7 +6,10 @@ name: Build and mark state as success
       - feature/*
 
 jobs:
-  show_info:
-    script:
-      echo Hello!
-  
+  test:  
+    runs-on: windows-latest
+    steps:
+      - name: Echo
+        run:
+          echo Hello!
+
