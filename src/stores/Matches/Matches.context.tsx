@@ -1,8 +1,7 @@
 import React, { PropsWithChildren, createContext, useContext } from 'react'
-import { Optional } from '../../utils/Optional';
 import { MatchesStore } from './MatchesStore';
 
-const MatchesContext = createContext<Optional<MatchesStore>>(undefined);
+const MatchesContext = createContext<MatchesStore>(new MatchesStore());
 
 export const useMatchesContext = () => useContext(MatchesContext)
 

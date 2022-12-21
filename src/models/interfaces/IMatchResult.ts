@@ -1,7 +1,7 @@
-import type { IMatch } from './IMatch';
+import { IMatch } from './IMatch';
+import { IMatchHead2Head } from './IMatchHead2Head';
 
 export interface IMatchResult {
-  count: number;
-  filter: any;
-  matches: IMatch[];
+  head2head: IMatchHead2Head;
+  match: IMatch;
 }

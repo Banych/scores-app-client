@@ -1,19 +1,19 @@
-import { observer } from 'mobx-react-lite';
-import React from 'react';
-import './App.css';
+import React, { ReactElement } from 'react';
+import { Outlet } from 'react-router-dom'
 import Header from './components/common/Header/Header';
-import { MatchesList } from './components/matches/MatchesList/MatchesList';
+import { MatchesProvider } from './stores/Matches/Matches.context';
+import './App.css';
 
-const App = observer(() => {
+const App = (): ReactElement => {
 
   return (
-    <div className='pb-4'>
-      <Header />
-      <div className="container">
-        <MatchesList />
+    <MatchesProvider>
+      <div className='pb-4'>
+        <Header />
+        <Outlet />
       </div>
-    </div>
+    </MatchesProvider>
   );
-})
+}
 
 export default App;

@@ -1,19 +1,20 @@
-import React, { useMemo } from 'react';
+import React, { CSSProperties, useMemo } from 'react';
 import { Match } from '../../../models/classes/Match';
 import { dateFormat } from '../../../utils/dateFormat';
 import styled from 'styled-components'
 import SmallAreaItem from '../../area/SmallAreaItem/SmallAreaItem';
 import { isToday } from 'date-fns'
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 
 export type MatchItemProps = {
   item: Match;
 }
 
-const StyledA = styled.a`
-text-decoration: none;
-color: var(--bs-black);
-`
+const StyledA: CSSProperties = {
+  textDecoration: 'none',
+  color: 'var(--bs - black)',
+}
 
 const MatchItem = (props: MatchItemProps) => {
   const {
@@ -52,11 +53,11 @@ const MatchItem = (props: MatchItemProps) => {
       <td><div className="">{competitionName}</div></td>
       <td className="text-end">{homeTeamName}</td>
       <td className={classNames(matchStatusColorClass, 'text-center', 'fw-bold')}>
-        <StyledA href={`/match/${matchId}`}>
+        <Link to={`/matches/${matchId}`} style={StyledA}>
           {
             fullTimeScore ?? formattedStartDate
           }
-        </StyledA>
+        </Link>
       </td>
       <td className="text-start">{awayTeamName}</td>
     </tr>
