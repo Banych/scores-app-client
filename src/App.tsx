@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
+import { Outlet } from 'react-router-dom'
+import Header from './components/common/Header/Header';
+import { MatchesProvider } from './stores/Matches/Matches.context';
 import './App.css';
 
-function App() {
+const App = (): ReactElement => {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        Home page
-      </header>
-    </div>
+    <MatchesProvider>
+      <div className='pb-4'>
+        <Header />
+        <Outlet />
+      </div>
+    </MatchesProvider>
   );
 }
 
